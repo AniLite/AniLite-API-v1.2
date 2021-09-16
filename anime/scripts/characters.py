@@ -46,18 +46,20 @@ def create_character(slug):
                     if item['attributes']['language'] == 'Japanese':
                         jp_voice_link = item['relationships']['person']['links']['related']
                         r = requests.get(jp_voice_link)
-                        jp = r.json()[
-                            'data']['attributes']['name']
-                        if 'jp' not in names:
-                            names['jp'] = jp
+                        if r.json()['data'] is not None:
+                            jp = r.json()[
+                                'data']['attributes']['name']
+                            if 'jp' not in names:
+                                names['jp'] = jp
 
                     elif item['attributes']['language'] == 'English':
                         en_voice_link = item['relationships']['person']['links']['related']
                         r = requests.get(en_voice_link)
-                        en = r.json()[
-                            'data']['attributes']['name']
-                        if 'en' not in names:
-                            names['en'] = en
+                        if r.json()['data'] is not None:
+                            en = r.json()[
+                                'data']['attributes']['name']
+                            if 'en' not in names:
+                                names['en'] = en
 
             return names
 
