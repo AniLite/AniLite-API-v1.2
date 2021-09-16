@@ -3,8 +3,8 @@ from django.db import models
 
 class Genre(models.Model):
 
-    name = models.CharField(max_length=50)
-    slug = models.SlugField(blank=True, null=True)
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return (f"Genre: '{self.name.title()}'")
@@ -34,7 +34,7 @@ class Anime(models.Model):
 
     name_en = models.CharField(max_length=150, null=True, blank=True)
     name_jp = models.CharField(max_length=150, null=True, blank=True)
-    slug = models.SlugField(null=True, blank=True)
+    slug = models.SlugField(max_length=255, null=True, blank=True)
     about = models.TextField(null=True, blank=True)
     age_rating = models.CharField(max_length=20, blank=True, null=True)
     started = models.DateField(null=True, blank=True)
