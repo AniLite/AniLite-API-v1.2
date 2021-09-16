@@ -1,11 +1,10 @@
 from pathlib import Path
 import os
-from django.core.management.utils import get_random_secret_key
 from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', get_random_secret_key())
+SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = True
 
@@ -36,12 +35,21 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table'
+    }
+}
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -106,6 +114,18 @@ DATABASES = {
     }
 }
 
+# Heroku PostgreSQL
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': config('HEROKU_NAME'),
+#         'USER': config('HEROKU_USER'),
+#         'PASSWORD': config('HEROKU_PASS'),
+#         'HOST': config('HEROKU_HOST'),
+#         'PORT': config('HEROKU_PORT')
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

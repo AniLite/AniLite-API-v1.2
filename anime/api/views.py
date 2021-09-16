@@ -3,7 +3,6 @@ from .serializers import AnimeDetailSerializer, AnimeListSerializer, CharacterDe
 from anime.models import Anime, Genre, Character
 from .mixins import MultipleFieldLookupMixin
 
-
 ########################## USING GENERIC VIEWS ##########################
 
 
