@@ -1,6 +1,9 @@
 from django.urls import path
 from .views import *
 
+# simplejwt
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 urlpatterns = [
 
     # anime related urls
@@ -29,4 +32,9 @@ urlpatterns = [
          CharacterUpdateView.as_view(), name='character-update'),
     path('character/<str:slug>/delete',
          CharacterDeleteView.as_view(), name='character-delete'),
+
+    # auth
+
+    #     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    #     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
 ]

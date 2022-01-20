@@ -2,6 +2,8 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView,
 from .serializers import AnimeDetailSerializer, AnimeListSerializer, CharacterDetailSerializer, CharacterListSerializer,  GenreSerializer
 from anime.models import Anime, Genre, Character
 from .mixins import MultipleFieldLookupMixin
+# from rest_framework.decorators import permission_classes
+# from rest_framework.permissions import IsAuthenticated
 
 ########################## USING GENERIC VIEWS ##########################
 
@@ -10,6 +12,8 @@ from .mixins import MultipleFieldLookupMixin
 
 
 class AnimeListView(ListAPIView):
+
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
 
