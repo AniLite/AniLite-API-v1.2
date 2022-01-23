@@ -14,15 +14,16 @@ class AnimeListSerializer(serializers.ModelSerializer):
                   'about', 'started', 'is_completed', 'ended', 'rating', 'num_of_eps', 'poster_image', 'cover_image', 'studio', 'genres']
 
     def get_genres(self, obj):
-        data = [
-            {
-                'id': genre.id,
-                'name': genre.name,
-                'link': f'{site_url}/genre/{genre.slug}',
-                'slug': f'{genre.slug}'
-            }
-            for genre in obj.genres.all()
-        ]
+        # data = [
+        #     {
+        #         'id': genre.id,
+        #         'name': genre.name,
+        #         'link': f'{site_url}/genre/{genre.slug}',
+        #         'slug': f'{genre.slug}'
+        #     }
+        #     for genre in obj.genres.all()
+        # ]
+        data = [genre.name for genre in obj.genres.all()]
         return data
 
 
