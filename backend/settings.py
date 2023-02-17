@@ -9,7 +9,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'anilite-api-v1.herokuapp.com',
-                 'localhost', 'anilite-api.herokuapp.com']
+                 'localhost', 'anilite-api.herokuapp.com', 'lionfish-app-7czdl.ondigitalocean.app']
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
