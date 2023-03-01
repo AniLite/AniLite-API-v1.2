@@ -8,8 +8,8 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'anilite-api-v1.herokuapp.com',
-                 'localhost', 'anilite-api.herokuapp.com', 'lionfish-app-7czdl.ondigitalocean.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost',
+                 'anilite-api.herokuapp.com', 'lionfish-app-7czdl.ondigitalocean.app']
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
@@ -96,20 +96,6 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-
-# ElephantSQL Postgres instance
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': config('ELEPHANT_NAME'),
-#         'USER': config('ELEPHANT_USER'),
-#         'PASSWORD': config('ELEPHANT_PASSWORD'),
-#         'HOST': config('ELEPHANT_HOST'),
-#         'PORT': config('ELEPHANT_PORT')
-#     }
-# }
-
 # SQLite instance
 
 # DATABASES = {
@@ -131,19 +117,6 @@ DATABASES = {
         'PORT': config('SUPABASE_PORT')
     }
 }
-
-# Heroku PostgreSQL
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': config('HEROKU_NAME'),
-#         'USER': config('HEROKU_USER'),
-#         'PASSWORD': config('HEROKU_PASS'),
-#         'HOST': config('HEROKU_HOST'),
-#         'PORT': config('HEROKU_PORT')
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

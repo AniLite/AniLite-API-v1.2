@@ -110,9 +110,11 @@ def add(i):
             f'\n    >>> Added the anime {anime.name_en} and it\'s related genres and characters successfully! ＼(~o~)／ \n')
 
         print('\n-----------------------------------------------------------------------------------------------------\n')
+        return 0
 
     # in case the details of the anime could not be fetched
     else:
         print(' >> The server responded with a status code of {}\n'.format(
             response.status_code))
         print('\n-----------------------------------------------------------------------------------------------------\n')
+        return 1

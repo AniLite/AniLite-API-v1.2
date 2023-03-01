@@ -9,6 +9,7 @@ urlpatterns = [
     # anime related urls
 
     path('anime/', AnimeListView.as_view(), name='anime-list'),
+    path('anime/add', AnimeAddView.as_view(), name='add-anime'),
     path('anime/create', AnimeCreateView.as_view(), name='anime-create'),
     path('anime/<str:slug>', AnimeDetailView.as_view(), name='anime-detail'),
     path('anime/<str:slug>/update', AnimeUpdateView.as_view(), name='anime-update'),

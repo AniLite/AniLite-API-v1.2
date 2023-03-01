@@ -1,8 +1,8 @@
 import time
 import requests
-import datetime
+from datetime import datetime
 from anime.models import Anime, Character, Genre
-from episode_summary import episode_summary_getter
+from .episode_summary import episode_summary_getter
 
 # For adding in bulk, supplying a range of IDs
 

@@ -1,3 +1,7 @@
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from anime.scripts import anime_adder
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 from .serializers import AnimeDetailSerializer, AnimeListSerializer, CharacterDetailSerializer, CharacterListSerializer,  GenreSerializer
 from anime.models import Anime, Genre, Character
@@ -82,6 +86,20 @@ class AnimeDeleteView(MultipleFieldLookupMixin, DestroyAPIView):
     queryset = Anime.objects.all()
     serializer_class = AnimeListSerializer
     lookup_fields = ['slug']
+
+
+class AnimeAddView(APIView):
+
+    def post(self, request):
+        id = request.data.get('id')
+        if id is not None:
+            stat = anime_adder.add(int(id))
+            if stat == 0:
+                return Response(data={'Success': f'Added the anime with id = {id}'}, status=status.HTTP_201_CREATED)
+            else:
+                return Response(data={'Failure': f'Something went wrong'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+        else:
+            return Response(data={'Error': 'Did not receive an ID'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 ##### Genre related views #####
